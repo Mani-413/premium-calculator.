@@ -1,0 +1,25 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build directories
+target/
+dist/
+build/
+bin/
+out/
+
+# Dependencies
+node_modules/
+.mvn/wrapper/maven-wrapper.jar
+apache-maven-*/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.log
+
+# Sensitive info
+.env
+.env.*
