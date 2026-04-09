@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-app: #e2e8f0;
+  --calc-body: #ffffff;
+  --display-bg: #1e293b;
+  --display-text: #f8fafc;
+  --text-main: #334155;
+  --text-muted: #64748b;
+  --border: #cbd5e1;
+  --btn-bg: #f8fafc;
+  --btn-hover: #f1f5f9;
+  --btn-operator: #e2e8f0;
+  --btn-operator-text: #0f172a;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --accent: #f97316;
+  --danger: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+#root {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.calculator-container {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  background: var(--calc-body);
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 800px) {
+  .calculator-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-calc {
+  padding: 2rem;
+}
+
+.display {
+  background: var(--display-bg);
+  color: var(--display-text);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: right;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+.expression {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  color: var(--text-muted);
+  min-height: 1.5rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.result {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.keypad.scientific {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--btn-bg);
+  color: var(--text-main);
+  padding: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:hover {
+  background: var(--btn-hover);
+  border-color: var(--text-muted);
+}
+
+.btn:active {
+  background: #cbd5e1;
+  transform: translateY(1px);
+}
+
+.btn.operator {
+  background: var(--btn-operator);
+  color: var(--btn-operator-text);
+  font-weight: 600;
+}
+
+.btn.accent {
+  color: var(--accent);
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn.equal {
+  grid-column: span 2;
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.history-panel {
+  background: #f8fafc;
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 800px) {
+  .history-panel {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+}
+
+.history-title {
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-list {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.history-item {
+  padding: 1rem;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.history-item:hover {
+  background: #f1f5f9;
+}
+
+.scientific-toggle {
+  display: flex;
+  background: #f1f5f9;
+  padding: 0.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background: white;
+  color: var(--primary);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+.animate-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
