@@ -1,16 +1,14 @@
 services:
-  # ☕ Java Backend (Dockerized for 100% reliability)
+  # ☕ Java Backend (Docker)
   - type: web
     name: calculator-backend
     env: docker
-    plan: free
     rootDir: backend
 
-  # 🌐 React Frontend
+  # 🌐 React Frontend (Static)
   - type: web
     name: calculator-frontend
     env: static
-    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
