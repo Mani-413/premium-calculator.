@@ -5,7 +5,6 @@ services:
     env: java
     plan: free
     rootDir: backend
-    # Render has Maven pre-installed
     buildCommand: mvn clean install -DskipTests
     startCommand: java -jar target/calculator-backend-0.0.1-SNAPSHOT.jar
     envVars:
@@ -20,12 +19,7 @@ services:
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    headers:
-      - path: /(.*)
-        headers:
-          - key: Cache-Control
-            value: public, max-age=31536000, immutable
     routes:
       - type: rewrite
-        src: /(.*)
-        dest: /index.html
+        source: /(.*)
+        destination: /index.html
